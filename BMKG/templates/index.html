@@ -1,0 +1,24 @@
+{% extends base %}
+
+{% block contents %}
+  <div class="content">
+    <div class="vis-bokeh" style="float: left;">
+        {{ super() }}
+    </div>
+    <div class="keterangan" style="float: right;">
+        <p>Keterangan</p>
+        <ul type="disc">
+            <li>Tn: Temperatur minimum (°C) </li>
+            <li>Tx: Temperatur maksimum (°C)</li>    
+            <li>Tavg: Temperatur rata-rata (°C)</li>    
+            <li>RH_avg: Kelembapan rata-rata (%)</li>    
+            <li>RR: Curah hujan (mm)</li>    
+            <li>ss: Lamanya penyinaran matahari (jam)</li>    
+            <li>ff_x: Kecepatan angin maksimum (m/s)</li>    
+            <li>ddd_x: Arah angin saat kecepatan maksimum (°)</li>    
+            <li>ff_avg: Kecepatan angin rata-rata (m/s)</li>    
+        </ul>
+        <p>Sumber Data: <a href="https://dataonline.bmkg.go.id/">Data Online BMKG</a></p>
+    </div>
+  </div>
+{% endblock %}
