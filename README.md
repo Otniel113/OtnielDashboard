@@ -2,4 +2,4 @@
 Kumpulan dashboard visualisasi data secara interaktif dengan libary Bokeh, Python 
 
 ## Deployment
-Bisa dilihat pada link: https://otnieldashboard.up.railway.app/
+Bisa dilihat pada link: https://otnieldashboard.onrender.com/
