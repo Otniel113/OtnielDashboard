@@ -1,12 +1,69 @@
 {% extends base %}
 
+{% block head %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ super() }}
+{% endblock %}
+
 {% block contents %}
+  <style>
+    /* Default Desktop Layout (Flexbox fallback or Grid) */
+    .content {
+      display: grid;
+      grid-template-columns: 25% 50% 25%;
+      grid-template-rows: auto auto;
+      grid-template-areas: 
+        "param vis leg";
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      gap: 10px;
+    }
+    
+    .parameter {
+      grid-area: param;
+      box-sizing: border-box;
+    }
+    
+    .vis-bokeh {
+      grid-area: vis;
+      box-sizing: border-box;
+      /* Ensure it takes full height of the row span */
+      align-self: stretch;
+      justify-self: stretch;
+      /* Add margins to reduce width on large screens */
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+    
+    .keterangan {
+      grid-area: leg;
+      box-sizing: border-box;
+    }
+    
+    /* Mobile Layout (as requested) */
+    @media (max-width: 768px) {
+      .content {
+        grid-template-columns: 50% 50% !important;
+        grid-template-rows: auto auto !important; 
+        grid-template-areas: 
+          "param leg" 
+          "vis vis" !important;
+      }
+    }
+  </style>
+
   <div class="content">
-    <div class="vis-bokeh" style="float: left;">
-        {{ super() }}
+    <div class="parameter">
+      <h3>Parameter</h3>
+      {{ embed(roots.controls) }}
     </div>
-    <div class="keterangan" style="float: right;">
-        <p>Keterangan</p>
+    <div class="vis-bokeh">
+      <h3>Visualisasi</h3>
+      {{ embed(roots.doplot) }}
+    </div>
+    <div class="keterangan">
+        <h3>Keterangan</h3>
         <ul type="disc">
             <li>Tn: Temperatur minimum (°C) </li>
             <li>Tx: Temperatur maksimum (°C)</li>    

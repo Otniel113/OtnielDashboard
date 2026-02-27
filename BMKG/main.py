@@ -115,8 +115,15 @@ x_select.on_change('value', update_plot)
 y_select.on_change('value', update_plot)
 
 # Pengaturan Layout
-layout = row(column(x_select, y_select,), fig_titik)
+# Create separate layouts for embedding
+controls = column(x_select, y_select, sizing_mode="stretch_width")
+controls.name = "controls"
+
+fig_titik.sizing_mode = "stretch_width"
+fig_titik.height = 600
+fig_titik.name = "doplot"
 
 # Run Curdoc (Bokeh Application)
-curdoc().add_root(layout)
+curdoc().add_root(controls)
+curdoc().add_root(fig_titik)
 curdoc().title = "Data BMKG"
